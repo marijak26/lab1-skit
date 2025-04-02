@@ -119,28 +119,17 @@ public class TestMapValueDifferences {
     void testMixedValues(){
         map1.put("a", -5);
         map1.put("b", 10);
-        map1.put("c", 3);
+        map1.put("c", 0);
         map2.put("a", 12);
-        map2.put("b", -7);
+        map2.put("b", 0);
         map2.put("c", -8);
         Map<String, Integer> expected = new HashMap<>();
         expected.put("a", 17);
-        expected.put("b", 17);
-        expected.put("c", 11);
+        expected.put("b", 10);
+        expected.put("c", 8);
         assertEquals(expected, MapValueDifferences.computeValueDifferences(map1, map2));
     }
 
-    @Test
-    void testSomeValuesZero() {
-        map1.put("a", 0);
-        map1.put("b", 10);
-        map2.put("a", 5);
-        map2.put("b", 0);
-        Map<String, Integer> expected = new HashMap<>();
-        expected.put("a", 5);
-        expected.put("b", 10);
-        assertEquals(expected, MapValueDifferences.computeValueDifferences(map1, map2));
-    }
 
     @Test
     void testAllValuesZero() {
