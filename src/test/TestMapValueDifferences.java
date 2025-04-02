@@ -30,7 +30,6 @@ public class TestMapValueDifferences {
         map2.put("a", 3);
         Map<String, Integer> expected = Map.of();
         assertEquals(expected, MapValueDifferences.computeValueDifferences(null, map2));
-        assertEquals(expected, MapValueDifferences.computeValueDifferences(map2, null));
     }
 
     @Test
@@ -38,7 +37,6 @@ public class TestMapValueDifferences {
         map1.put("a", 3);
         Map<String, Integer> expected = Map.of();
         assertEquals(expected, MapValueDifferences.computeValueDifferences(map1, null));
-        assertEquals(expected, MapValueDifferences.computeValueDifferences(null, map1));
     }
 
     @Test
@@ -99,18 +97,6 @@ public class TestMapValueDifferences {
         expected.put("a", 7);
         expected.put("b", 3);
         expected.put("c", 5);
-        assertEquals(expected, MapValueDifferences.computeValueDifferences(map1, map2));
-    }
-
-    @Test
-    void testAllPositiveValues(){
-        map1.put("a", 5);
-        map1.put("b", 10);
-        map2.put("a", 12);
-        map2.put("b", 7);
-        Map<String, Integer> expected = new HashMap<>();
-        expected.put("a", 7);
-        expected.put("b", 3);
         assertEquals(expected, MapValueDifferences.computeValueDifferences(map1, map2));
     }
 
